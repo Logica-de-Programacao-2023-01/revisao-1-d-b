@@ -1,21 +1,6 @@
 package main
 
 import "strings"
-import "fmt"
-
-func main() {
-	text := "Machado de Assis"
-
-	avg, err := AverageLettersPerWord(text)
-
-	if err != nil {
-		fmt.Println("Error:", err)
-	} else {
-		fmt.Printf("A média de letras por palavra é: %.1f", avg)
-		fmt.Println("\n0 erros encontrados!")
-	}
-
-}
 
 func AverageLettersPerWord(text string) (float64, error) {
 
