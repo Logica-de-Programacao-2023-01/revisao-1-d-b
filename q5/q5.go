@@ -4,27 +4,27 @@ func ConvertTemperature(temp float64, fromScale string, toScale string) (float64
     switch from {
     case Celsius:
         switch to {
-        case Fahrenheit:
+        case F:
             return temp*9/5 + 32, nil
-        case Kelvin:
+        case K:
             return temp + 273.15, nil
         default:
             return 0, fmt.Errorf("escala de destino inválida")
         }
     case Fahrenheit:
         switch to {
-        case Celsius:
+        case C:
             return (temp - 32) * 5 / 9, nil
-        case Kelvin:
+        case K:
             return (temp-32)*5/9 + 273.15, nil
         default:
             return 0, fmt.Errorf("escala de destino inválida")
         }
-    case Kelvin:
+    case K:
         switch to {
-        case Celsius:
+        case C:
             return temp - 273.15, nil
-        case Fahrenheit:
+        case F:
             return (temp-273.15)*9/5 + 32, nil
         default:
             return 0, fmt.Errorf("escala de destino inválida")
