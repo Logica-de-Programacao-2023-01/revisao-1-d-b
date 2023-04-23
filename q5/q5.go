@@ -1,5 +1,7 @@
 package q5
 
+import "fmt"
+
 func ConvertTemperature(temp float64, fromScale string, toScale string) (float64, error) {
 	var err error
 	var convert float64
