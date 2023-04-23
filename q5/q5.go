@@ -1,52 +1,37 @@
 package q5
 
 func ConvertTemperature(temp float64, fromScale string, toScale string) (float64, error) {
-	var err error
-	var convert float64
-
-	if err != nil {
-		if fromScale == "C" && toScale == "F" {
-			convert := temp*9/5 + 32
-			return convert, err
-		} else if fromScale == "C" && toScale == "K" {
-			convert := temp + 273.15
-			return convert, err
-		} else if fromScale == "F" && toScale == "C" {
-			convert := (temp - 32) * 5 / 9
-			return convert, err
-		} else if fromScale == "F" && toScale == "K" {
-			convert := (temp-32)*5/9 + 273.15
-			return convert, err
-		} else if fromScale == "K" && toScale == "C" {
-			convert := temp - 273.15
-			return convert, err
-		} else if fromScale == "K" && toScale == "F" {
-			convert := (temp-273.15)*9/5 + 32
-			return convert, err
-		} else {
-			return convert, err
+	var finalTemp float64
+	switch fromScale {
+	case "C":
+		switch toScale {
+		case "F":
+			finalTemp = temp*9/5 + 32
+		case "K":
+			finalTemp = temp + 273.15
+		default:
+			return 0, fmt.Errorf("escala inválida")
 		}
-	} else {
-		if fromScale == "C" && toScale == "F" {
-			convert := temp*9/5 + 32
-			return convert, err
-		} else if fromScale == "C" && toScale == "K" {
-			convert := temp + 273.15
-			return convert, err
-		} else if fromScale == "F" && toScale == "C" {
-			convert := (temp - 32) * 5 / 9
-			return convert, err
-		} else if fromScale == "F" && toScale == "K" {
-			convert := (temp-32)*5/9 + 273.15
-			return convert, err
-		} else if fromScale == "K" && toScale == "C" {
-			convert := temp - 273.15
-			return convert, err
-		} else if fromScale == "K" && toScale == "F" {
-			convert := (temp-273.15)*9/5 + 32
-			return convert, err
-		} else {
-			return convert, err
+	case "F":
+		switch toScale {
+		case "C":
+			finalTemp = (temp - 32) * 5 / 9
+		case "K":
+			finalTemp = (temp-32)*5/9 + 273.15
+		default:
+			return 0, fmt.Errorf("escala inválida")
 		}
+	case "K":
+		switch toScale {
+		case "C":
+			finalTemp = temp - 273.15
+		case "F":
+			finalTemp = (temp-273.15)*9/5 + 32
+		default:
+			return 0, fmt.Errorf("escala inválida")
+		}
+	default:
+		return 0, fmt.Errorf("escala inválida")
 	}
+	return finalTemp, nil
 }
