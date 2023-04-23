@@ -11,6 +11,10 @@ func AverageLettersPerWord(text string) (float64, error) {
 
 	if len(words) == 0 {
 		return 0, fmt.Errorf("texto vazio")
+	} else if len(strings.TrimSpace(text)) == 0 {
+		return 0, fmt.Errorf("texto vazio")
+	} else if len(text) == 0 {
+		return 0, fmt.Errorf("texto vazio")
 	}
 
 	totalLetter := 0
