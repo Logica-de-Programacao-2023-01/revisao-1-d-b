@@ -18,7 +18,7 @@ func AverageLettersPerWord(text string) (float64, error) {
 
 	average := 0.0
 
-	if text != "" || len(text) != 0 {
+	if text != "" || len(text) != 0 || text != " " {
 		average = float64(totalLetter) / float64(len(words))
 	} else {
 		return 0, fmt.Errorf("o texto está vazio")
