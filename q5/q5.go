@@ -1,7 +1,5 @@
 package q5
 
-import "fmt"
-
 func ConvertTemperature(temp float64, fromScale string, toScale string) (float64, error) {
 	var err error
 	var convert float64
@@ -24,8 +22,7 @@ func ConvertTemperature(temp float64, fromScale string, toScale string) (float64
 	} else if fromScale == "K" && toScale == "F" {
 		convert := (temp-273.15)*9/5 + 32
 		return convert, err
-	} else if err != nil {
-		fmt.Println("escala inválida")
+	} else {
+		return convert, err
 	}
-	return convert, err
 }
