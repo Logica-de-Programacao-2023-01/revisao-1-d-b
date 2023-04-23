@@ -7,22 +7,19 @@ import (
 
 func AverageLettersPerWord(text string) (float64, error) {
 
-	words := strings.Split(text, " ")
+	words := strings.Fields(text)
+
+	if len(words) == 0 {
+		return 0, fmt.Errorf("texto vazio")
+	}
 
 	totalLetter := 0
 
 	for _, word := range words {
 		totalLetter += len(word)
-
 	}
 
-	average := 0.0
-
-	if text != "" || len(text) != 0 || text != " " {
-		average = float64(totalLetter) / float64(len(words))
-	} else {
-		return 0, fmt.Errorf("o texto está vazio")
-	}
+	average := float64(totalLetter) / float64(len(words))
 
 	return average, nil
 }
