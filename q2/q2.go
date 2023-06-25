@@ -1,21 +1,23 @@
 package q2
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 func AverageLettersPerWord(text string) (float64, error) {
-	words := strings.Fields(text)
-	numWords := len(words)
-
-	if numWords == 0 {
-		return 0, errors.New("texto vazio")
+	speciais:= []string{"!","?","@","#","$",".",",","1","2","3","4","5","6","7","8","9"}
+	for _, caracter:= range speciais {
+		text = strings.ReplaceAll(text,caracter,"")
 	}
-
-	totalLetters := 0
-	for _, word := range words {
-		totalLetters += len(word)
+	palavras := strings.Fields(text)
+	if len(palavras) == 0 {
+		return 0, fmt.Errorf("texto vazio")
+		
 	}
-
-	average := float64(totalLetters) / float64(numWords)
-	return average, nil
-
+	var totalpalavra int
+	for _, palavra:= range palavras {
+		totalpalavra += len(palavra)
+	}
+	return float64(totalpalavra) / float64(len(palavras)),nil
 }
