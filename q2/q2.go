@@ -1,9 +1,6 @@
 package q2
 
-import (
-	"fmt"
-	"strings"
-)
+import "strings"
 
 func AverageLettersPerWord(text string) (float64, error) {
 	words := strings.Fields(text)
