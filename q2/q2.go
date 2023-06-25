@@ -6,24 +6,19 @@ import (
 )
 
 func AverageLettersPerWord(text string) (float64, error) {
-
 	words := strings.Fields(text)
+	numWords := len(words)
 
-	if len(words) == 0 {
-		return 0, fmt.Errorf("texto vazio")
-	} else if len(strings.TrimSpace(text)) == 0 {
-		return 0, fmt.Errorf("texto vazio")
-	} else if len(text) == 0 {
-		return 0, fmt.Errorf("texto vazio")
+	if numWords == 0 {
+		return 0, errors.New("texto vazio")
 	}
 
-	totalLetter := 0
-
+	totalLetters := 0
 	for _, word := range words {
-		totalLetter += len(word)
+		totalLetters += len(word)
 	}
 
-	average := float64(totalLetter) / float64(len(words))
-
+	average := float64(totalLetters) / float64(numWords)
 	return average, nil
+
 }
